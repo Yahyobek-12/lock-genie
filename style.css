@@ -65,6 +65,10 @@ button:active {
     color: #000;
 }
 
+.result {
+    cursor: pointer;
+}
+
 /* Media screen */
 
 @media screen and (max-width: 520px) {

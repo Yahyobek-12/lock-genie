@@ -20,8 +20,8 @@ btn.addEventListener('click', () => {
     }
 
     function randomizeCase(char) {
-        if(typeof char === 'string') {
-            if(Math.random() < 0.5) {
+        if (typeof char === 'string') {
+            if (Math.random() < 0.5) {
                 return char.toUpperCase()
             } else {
                 return char
@@ -34,11 +34,24 @@ btn.addEventListener('click', () => {
     let passwordLength = 12
     let randomPassword = ''
     
-    for(let i = 0; i < passwordLength; i++) {
+    for (let i = 0; i < passwordLength; i++) {
         let randomChar = createRandomPassword(allCharacters)
         randomPassword += randomizeCase(randomChar)
     }
     
     console.log(randomPassword);
     result.textContent = randomPassword
+})
+
+result.addEventListener('click', () => {
+    const password = result.textContent
+    if (password) {
+        navigator.clipboard.writeText(password).then(() => {
+            alert(`Copied to clipboard: ${password}`)
+        }).catch(err => {
+            alert('Failed to copy text to clipboard.')
+        })
+    } else {
+        alert('No password to copy!')
+    }
 })
